@@ -1,6 +1,7 @@
 package com.u0509421.todayinhistory.Activities;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import com.u0509421.todayinhistory.R;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener{
 
     private Button btnEveryday,btnSearch,btnStar,btnMore,btnToday;
     private String monthTemp = null,month = null,day = null;
@@ -50,7 +51,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btnToday:
 
+                Bundle date = new Bundle();
+                date.putString("day",day);
+                date.putString("month",month);
+                Intent intent = new Intent(this,DayActivity.class);
+                intent.putExtras(date);
+                startActivity(intent);
                 break;
+
             case R.id.btnEveryday:
                 startActivity(new Intent(this,DateSelectActivity.class));
                 break;

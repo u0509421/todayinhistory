@@ -1,7 +1,9 @@
 package com.u0509421.todayinhistory.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -22,10 +24,16 @@ public class DateSelectActivity extends AppCompatActivity implements OnDateSelec
     private MaterialCalendarView widget = null;
     private TextView tvDate = null;
 
+    private Bundle bundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.date_select);
+        setContentView(R.layout.date_select_page);
+
+        //单独设定Action Bar title
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        setTitle("历史上的每天");
 
         widget = (MaterialCalendarView) findViewById(R.id.calendarView);
         widget.setOnDateChangedListener(this);
@@ -33,6 +41,16 @@ public class DateSelectActivity extends AppCompatActivity implements OnDateSelec
 
         tvDate = (TextView) findViewById(R.id.tvDate);
         tvDate.setText(getSelectedDateString());
+
+        tvDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DateSelectActivity.this,DayActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -40,7 +58,7 @@ public class DateSelectActivity extends AppCompatActivity implements OnDateSelec
         tvDate.setText(getSelectedDateString());
         System.out.println(widget.getSelectedDate());
         String str = widget.getSelectedDate().toString();
-        Bundle bundle = dateParse(str);
+        bundle = dateParse(str);
         System.out.println(bundle.getString("month"));
         System.out.println(bundle.getString("day"));
     }
@@ -63,7 +81,7 @@ public class DateSelectActivity extends AppCompatActivity implements OnDateSelec
         String temp = date.substring(13,21);
         String[] dateArray = temp.split("-");
         Bundle bundle = new Bundle();
-        bundle.putString("month",dateArray[1]);
+        bundle.putString("month",String.valueOf((Integer.parseInt(dateArray[1])+1)));
         bundle.putString("day",dateArray[2]);
 
         return bundle;

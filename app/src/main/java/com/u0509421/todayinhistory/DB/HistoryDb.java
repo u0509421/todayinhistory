@@ -1,4 +1,4 @@
-package com.u0509421.todayinhistory.Activities.DB;
+package com.u0509421.todayinhistory.DB;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
