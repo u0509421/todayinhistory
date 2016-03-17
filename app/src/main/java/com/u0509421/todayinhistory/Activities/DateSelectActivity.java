@@ -82,8 +82,11 @@ public class DateSelectActivity extends AppCompatActivity implements OnDateSelec
         String[] dateArray = temp.split("-");
         Bundle bundle = new Bundle();
         bundle.putString("month",String.valueOf((Integer.parseInt(dateArray[1])+1)));
-        bundle.putString("day",dateArray[2]);
-
+        if (dateArray[2].length() == 2){
+            bundle.putString("day",dateArray[2].substring(0,1));
+        }else{
+            bundle.putString("day",dateArray[2]);
+        }
         return bundle;
     }
 }

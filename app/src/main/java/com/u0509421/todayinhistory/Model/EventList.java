@@ -3,17 +3,17 @@ package com.u0509421.todayinhistory.Model;
 /**
  * Created by Terry on 17/3/16.
  */
-public class Result {
+public class EventList {
 
     private String day;
     private String date;
     private String title;
     private String e_id;
 
-    public Result(){
+    public EventList(){
         super();
     }
-    public Result(String day,String date,String title,String e_id){
+    public EventList(String day, String date, String title, String e_id){
         super();
         this.day = day;
         this.date = date;

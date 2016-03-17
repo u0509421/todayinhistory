@@ -2,7 +2,7 @@ package com.u0509421.todayinhistory.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -10,7 +10,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.u0509421.todayinhistory.Model.Result;
+import com.u0509421.todayinhistory.Controllers.EventListAdapter;
+import com.u0509421.todayinhistory.Model.EventList;
 import com.u0509421.todayinhistory.R;
 
 import org.json.JSONArray;
@@ -25,10 +26,18 @@ import java.util.List;
  */
 public class DayActivity extends AppCompatActivity {
 
+    private ArrayList<EventList>list = new ArrayList<EventList>();
+    private ListView lvDay;
+    private EventListAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.day_page);
+
+        lvDay = (ListView) findViewById(R.id.lvDay);
+        adapter = new EventListAdapter(DayActivity.this);
+        lvDay.setAdapter(adapter);
 
         //获取传过来的日期
         Bundle bundle = getIntent().getExtras();
@@ -49,6 +58,9 @@ public class DayActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         System.out.println(response.toString());
+                        parseJson(response);
+                        adapter.setData(list);
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -58,17 +70,30 @@ public class DayActivity extends AppCompatActivity {
                     }
         });
         queue.add(jsonObjectRequest);
+
     }
 
-    private void parseJson(JSONObject jsonObject){
+    /**
+     * 解析网络请求返回的JSON数据
+     * @param jsonObject
+     * @return list
+     */
+    private List<EventList> parseJson(JSONObject jsonObject){
         try {
             JSONArray results = new JSONArray(jsonObject.getString("result"));
-            List<Result>list = new ArrayList<Result>();
+
             for (int i = 0; i < results.length(); i++){
-                
+                JSONObject object = results.getJSONObject(i);
+                EventList eventList = new EventList();
+                eventList.setDate(object.getString("date"));
+                eventList.setTitle(object.getString("title"));
+                eventList.setE_id(object.getString("e_id"));
+                list.add(eventList);
             }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return list;
     }
 }
