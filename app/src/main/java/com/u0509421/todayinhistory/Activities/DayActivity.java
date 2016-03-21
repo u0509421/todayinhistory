@@ -1,99 +1,60 @@
 package com.u0509421.todayinhistory.Activities;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
+import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.u0509421.todayinhistory.Controllers.EventListAdapter;
-import com.u0509421.todayinhistory.Model.EventList;
 import com.u0509421.todayinhistory.R;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.net.URL;
 
 /**
- * Created by Terry on 17/3/16.
+ * Created by Terry on 20/3/16.
  */
 public class DayActivity extends AppCompatActivity {
 
-    private ArrayList<EventList>list = new ArrayList<EventList>();
-    private ListView lvDay;
-    private EventListAdapter adapter;
+    private TextView tvDayContent;
+    private static final String KEY = "http://v.juhe.cn/todayOnhistory/queryDetail.php?key=a87c2d7033aedc2b2460de9117588285&e_id=";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.day_page);
 
-        lvDay = (ListView) findViewById(R.id.lvDay);
-        adapter = new EventListAdapter(DayActivity.this);
-        lvDay.setAdapter(adapter);
+        tvDayContent = (TextView) findViewById(R.id.tvDayContent);
 
-        //获取传过来的日期
-        Bundle bundle = getIntent().getExtras();
-        String day = bundle.getString("day");
-        String month = bundle.getString("month");
-        String urlString = "http://v.juhe.cn/todayOnhistory/queryEvent.php?key="+
-                "a87c2d7033aedc2b2460de9117588285"+"&date="+month+"/"+day;
-        System.out.println(urlString);
+        Intent intent = getIntent();
+        String url = KEY + intent.getStringExtra("e_id");
+        System.out.println(url);
 
-        //单独设定Action Bar title
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-        setTitle("历史上的"+month+"月"+day+"日");
-
-        //开始网络请求
-        RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(urlString, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        System.out.println(response.toString());
-                        parseJson(response);
-                        adapter.setData(list);
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        System.out.println(error.getMessage().toString());
-                        Toast.makeText(getApplicationContext(),"网络不给力，重新连接一下吧~",Toast.LENGTH_SHORT).show();
-                    }
-        });
-        queue.add(jsonObjectRequest);
-
-    }
-
-    /**
-     * 解析网络请求返回的JSON数据
-     * @param jsonObject
-     * @return list
-     */
-    private List<EventList> parseJson(JSONObject jsonObject){
-        try {
-            JSONArray results = new JSONArray(jsonObject.getString("result"));
-
-            for (int i = 0; i < results.length(); i++){
-                JSONObject object = results.getJSONObject(i);
-                EventList eventList = new EventList();
-                eventList.setDate(object.getString("date"));
-                eventList.setTitle(object.getString("title"));
-                eventList.setE_id(object.getString("e_id"));
-                list.add(eventList);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return list;
+//        SpannableStringBuilder builder = new SpannableStringBuilder();
+//        builder.append("My String. I").
+//                append(" ", new ImageSpan(this,R.drawable.author),0).
+//                append(" Cree by Dexode");
+//        tvDayContent.setText(builder);
+//        Html.ImageGetter imgGetter2 = new Html.ImageGetter() {
+//            @Override
+//            public Drawable getDrawable(String source) {
+//                Drawable drawable = null;
+//                URL url;
+//                try {
+//                    url = new URL(source);
+//                    drawable = Drawable.createFromStream(url.openStream(), "");
+//                } catch (Exception e) {
+//                    return null;
+//                }
+//
+//                drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+//                return drawable;
+//            }
+//        };
+//        tvDayContent.append(Html.fromHtml("网络下载的图片加上空格防止不"
+//
+//                +"到换行的时候字就因为图片的原因被换行       <img src=\""+url+"\">此处也可以加文字",imgGetter2, null) );
     }
 }

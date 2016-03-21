@@ -3,4 +3,28 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/ivMoreIcon"
+        android:src="@drawable/lishi"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvYishiweijian"
+        android:text="历史就是一面镜子"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvYishiweijian1"
+        android:text="教会我们以史为鉴"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="5dp"/>
+
 </LinearLayout>

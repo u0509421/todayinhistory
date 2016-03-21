@@ -1,23 +1,29 @@
-package com.u0509421.todayinhistory.Activities;
+package com.u0509421.todayinhistory.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
+import com.u0509421.todayinhistory.Activities.DayActivity;
 import com.u0509421.todayinhistory.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 /**
- * Created by Terry on 15/3/16.
+ * Created by Terry on 21/3/16.
  */
-public class DateSelectActivity extends AppCompatActivity implements OnDateSelectedListener,OnMonthChangedListener{
+public class EverydayFragment extends Fragment implements OnDateSelectedListener,OnMonthChangedListener {
 
     private static final DateFormat FORMATTER = SimpleDateFormat.getDateInstance();
 
@@ -26,31 +32,12 @@ public class DateSelectActivity extends AppCompatActivity implements OnDateSelec
 
     private Bundle bundle;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.date_select_page);
+    public EverydayFragment() {
+    }
 
-        //单独设定Action Bar title
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-        setTitle("历史上的每天");
-
-        widget = (MaterialCalendarView) findViewById(R.id.calendarView);
-        widget.setOnDateChangedListener(this);
-        widget.setOnMonthChangedListener(this);
-
-        tvDate = (TextView) findViewById(R.id.tvDate);
-        tvDate.setText(getSelectedDateString());
-
-        tvDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DateSelectActivity.this,DayActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
-
+    public static EverydayFragment newInstance() {
+        EverydayFragment sampleFragment = new EverydayFragment();
+        return sampleFragment;
     }
 
     @Override
@@ -61,11 +48,44 @@ public class DateSelectActivity extends AppCompatActivity implements OnDateSelec
         bundle = dateParse(str);
         System.out.println(bundle.getString("month"));
         System.out.println(bundle.getString("day"));
+
+        Intent intent = new Intent(getContext(), DayActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override
     public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
-        getSupportActionBar().setTitle(FORMATTER.format(date.getDate()));
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(FORMATTER.format(date.getDate()));
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.date_select_page,container,false);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
+        ((AppCompatActivity)getActivity()).setTitle("历史上的每天");
+
+
+        widget = (MaterialCalendarView) rootView.findViewById(R.id.calendarView);
+        widget.setOnDateChangedListener(this);
+        widget.setOnMonthChangedListener(this);
+
+        tvDate = (TextView) rootView.findViewById(R.id.tvDate);
+        tvDate.setText(getSelectedDateString());
+
+        tvDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), DayActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+
+        return rootView;
     }
 
     private String getSelectedDateString(){
@@ -82,7 +102,7 @@ public class DateSelectActivity extends AppCompatActivity implements OnDateSelec
         String[] dateArray = temp.split("-");
         Bundle bundle = new Bundle();
         bundle.putString("month",String.valueOf((Integer.parseInt(dateArray[1])+1)));
-        if (dateArray[2].length() == 2){
+        if (dateArray[2].substring(1,2) == "}"){
             bundle.putString("day",dateArray[2].substring(0,1));
         }else{
             bundle.putString("day",dateArray[2]);
