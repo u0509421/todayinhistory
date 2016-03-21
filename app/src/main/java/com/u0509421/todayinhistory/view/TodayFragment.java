@@ -1,15 +1,15 @@
 package com.u0509421.todayinhistory.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.u0509421.todayinhistory.Activities.DayActivity;
 import com.u0509421.todayinhistory.Controllers.EventListAdapter;
 import com.u0509421.todayinhistory.Model.EventList;
 import com.u0509421.todayinhistory.R;
@@ -61,10 +62,25 @@ public class TodayFragment extends Fragment {
         System.out.println(urlString);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
-        ((AppCompatActivity)getActivity()).setTitle("历史上的"+month+"月"+day+"日");
+        ((AppCompatActivity)getActivity()).setTitle("历史上的" + month + "月" + day + "日");
         list_today = (ListView) rootView.findViewById(R.id.list_today);
         adapter = new EventListAdapter(getActivity());
         list_today.setAdapter(adapter);
+        list_today.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String title = list.get(position).getTitle();
+                String date = list.get(position).getDate();
+                String e_id = list.get(position).getE_id();
+                Bundle bundle = new Bundle();
+                bundle.putString("title",title);
+                bundle.putString("date",date);
+                bundle.putString("e_id",e_id);
+                Intent intent = new Intent(getContext(), DayActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
 
         //开始网络请求

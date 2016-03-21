@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:paddingLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/author"
@@ -14,15 +15,18 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="15dp">
 
         <TextView
+            android:paddingTop="10dp"
             android:id="@+id/tvEventListDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="date"
              />
         <TextView
+            android:paddingTop="10dp"
             android:id="@+id/tvEventListTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

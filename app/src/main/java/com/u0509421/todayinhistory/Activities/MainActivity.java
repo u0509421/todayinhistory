@@ -32,16 +32,7 @@ public class MainActivity extends AppCompatActivity{
         mBottomBar.mapColorForTab(1,"#8a7370");
         mBottomBar.mapColorForTab(2,"#8a7370");
         mBottomBar.mapColorForTab(3,"#8a7370");
-//
-//        list_today.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String e_id = list.get(position).getE_id();
-//                Intent intent = new Intent(MainActivity.this,DayActivity.class);
-//                intent.putExtra("e_id",e_id);
-//                startActivity(intent);
-//            }
-//        });
+
     }
 
 }

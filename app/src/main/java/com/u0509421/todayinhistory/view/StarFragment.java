@@ -27,8 +27,9 @@ public class StarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.star_page,container,false);
-
+        View rootView = inflater.inflate(R.layout.fragment_star,container,false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
+        ((AppCompatActivity)getActivity()).setTitle("收藏");
 
         return rootView;
     }

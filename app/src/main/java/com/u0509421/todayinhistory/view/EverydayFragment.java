@@ -15,6 +15,7 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 import com.u0509421.todayinhistory.Activities.DayActivity;
+import com.u0509421.todayinhistory.Activities.DayListActivity;
 import com.u0509421.todayinhistory.R;
 
 import java.text.DateFormat;
@@ -45,11 +46,11 @@ public class EverydayFragment extends Fragment implements OnDateSelectedListener
         tvDate.setText(getSelectedDateString());
         System.out.println(widget.getSelectedDate());
         String str = widget.getSelectedDate().toString();
-        bundle = dateParse(str);
+        dateParse(str);
         System.out.println(bundle.getString("month"));
         System.out.println(bundle.getString("day"));
 
-        Intent intent = new Intent(getContext(), DayActivity.class);
+        Intent intent = new Intent(getContext(), DayListActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -62,7 +63,7 @@ public class EverydayFragment extends Fragment implements OnDateSelectedListener
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.date_select_page,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_date_select,container,false);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
         ((AppCompatActivity)getActivity()).setTitle("历史上的每天");
@@ -78,7 +79,7 @@ public class EverydayFragment extends Fragment implements OnDateSelectedListener
         tvDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), DayActivity.class);
+                Intent intent = new Intent(getContext(), DayListActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -96,17 +97,16 @@ public class EverydayFragment extends Fragment implements OnDateSelectedListener
         return FORMATTER.format(date.getDate());
     }
 
-    private Bundle dateParse(String date){
+    private void dateParse(String date){
         //月份需要+1才是真正的月份
-        String temp = date.substring(13,21);
+        String temp = date.substring(13, 21);
         String[] dateArray = temp.split("-");
-        Bundle bundle = new Bundle();
+        bundle = new Bundle();
         bundle.putString("month",String.valueOf((Integer.parseInt(dateArray[1])+1)));
-        if (dateArray[2].substring(1,2) == "}"){
+        if (dateArray[2].substring(1,2).equals("}")){
             bundle.putString("day",dateArray[2].substring(0,1));
         }else{
             bundle.putString("day",dateArray[2]);
         }
-        return bundle;
     }
 }

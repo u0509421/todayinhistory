@@ -26,7 +26,7 @@ public class MoreFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.more_page,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_more,container,false);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
         ((AppCompatActivity)getActivity()).setTitle("更多");

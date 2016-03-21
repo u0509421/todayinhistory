@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activities.DayActivity"/>
+        <activity android:name=".Activities.DayActivity" />
+        <activity android:name=".Activities.DayListActivity" />
 
     </application>
 
