@@ -1,6 +1,9 @@
 package com.u0509421.todayinhistory.Activities;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.u0509421.todayinhistory.DB.HistoryDb;
 import com.u0509421.todayinhistory.Model.EventList;
 import com.u0509421.todayinhistory.R;
 
@@ -32,25 +36,43 @@ public class DayActivity extends AppCompatActivity {
 
     private TextView tvDayContent,tvDayTitle;
     private static final String KEY = "http://v.juhe.cn/todayOnhistory/queryDetail.php?key=a87c2d7033aedc2b2460de9117588285&e_id=";
-    private String title,date;
+    private String title,date,eid;
+
+    private HistoryDb historyDb;
+    private SQLiteDatabase dbWrite;
+    private ContentValues cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day);
 
+        //View初始化
         tvDayContent = (TextView) findViewById(R.id.tvDayContent);
         tvDayTitle = (TextView) findViewById(R.id.tvDayTitle);
         tvDayContent.setMovementMethod(new ScrollingMovementMethod());
 
+        //接收传来的日期跟标题
         Intent intent = getIntent();
         String url = KEY + intent.getStringExtra("e_id");
         System.out.println(url);
+
+        eid = intent.getStringExtra("e_id");
         title = intent.getStringExtra("title");
         date = intent.getStringExtra("date");
         System.out.println(title + date);
 
+        //准备把数据放到本地数据库中
+        cv = new ContentValues();
+        cv.put("title",title);
+        cv.put("date",date);
+        cv.put("eid",eid);
+        historyDb = new HistoryDb(this);
+        dbWrite = historyDb.getWritableDatabase();
+
+        //设定标题
         getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         setTitle(date);
 
         RequestQueue dayQueue = Volley.newRequestQueue(this);
@@ -84,12 +106,12 @@ public class DayActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_favourite:
-                Toast.makeText(this, "Favourite selected", Toast.LENGTH_SHORT)
+                dbWrite.replace("history",null,cv);
+                Toast.makeText(this, "已添加到收藏", Toast.LENGTH_SHORT)
                         .show();
                 break;
             case R.id.action_share:
-                Toast.makeText(this, "Share selected", Toast.LENGTH_SHORT)
-                        .show();
+                //TODO
                 break;
             default:
                 break;

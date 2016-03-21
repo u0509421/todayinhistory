@@ -15,7 +15,7 @@
         android:id="@+id/tvDayTitle"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/colorPrimary"
-        android:textSize="20dp"/>
+        android:textSize="30dp"/>
 
     <TextView
         android:paddingTop="10dp"
@@ -25,11 +25,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:scrollbars="vertical"
         android:maxLines="100"
         android:lineSpacingExtra="3dp"
-        android:lineSpacingMultiplier="1.5"
-        />
+        android:lineSpacingMultiplier="1.5" />
 
 </LinearLayout>

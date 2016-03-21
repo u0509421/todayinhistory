@@ -23,7 +23,7 @@ public class HistoryDb extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "title TEXT not null unique, "+
                 "date TEXT, "+
-                "content TEXT )";
+                "eid TEXT )";
 
         db.execSQL(sql);
 
