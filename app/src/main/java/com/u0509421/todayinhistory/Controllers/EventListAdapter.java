@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.u0509421.todayinhistory.Model.EventList;
@@ -54,7 +53,7 @@ public class EventListAdapter extends BaseAdapter {
         EventListHolder holder = null;
         if (convertView == null){
             holder = new EventListHolder();
-            convertView = mLayoutInflater.inflate(R.layout.event_listview_cell,null);
+            convertView = mLayoutInflater.inflate(R.layout.cell_event_listview,null);
 //            holder.ivEventList = (ImageView) convertView.findViewById(R.id.ivEventList);
             holder.tvEventListDay = (TextView) convertView.findViewById(R.id.tvEventListDay);
             holder.tvEventListTitle = (TextView) convertView.findViewById(R.id.tvEventListTitle);
