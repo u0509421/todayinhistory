@@ -59,7 +59,6 @@ public class TodayFragment extends Fragment {
         getTodayDate();
         String urlString = "http://v.juhe.cn/todayOnhistory/queryEvent.php?key="+
                 "a87c2d7033aedc2b2460de9117588285"+"&date="+month+"/"+day;
-        System.out.println(urlString);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
         ((AppCompatActivity)getActivity()).setTitle("历史上的" + month + "月" + day + "日");

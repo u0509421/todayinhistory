@@ -47,8 +47,6 @@ public class EverydayFragment extends Fragment implements OnDateSelectedListener
         System.out.println(widget.getSelectedDate());
         String str = widget.getSelectedDate().toString();
         dateParse(str);
-        System.out.println(bundle.getString("month"));
-        System.out.println(bundle.getString("day"));
 
         Intent intent = new Intent(getContext(), DayListActivity.class);
         intent.putExtras(bundle);

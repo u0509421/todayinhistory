@@ -1,5 +1,7 @@
 package com.u0509421.todayinhistory.view;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.u0509421.todayinhistory.Controllers.EventListAdapter;
@@ -36,7 +39,7 @@ public class MoreFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_more,container,false);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
@@ -47,10 +50,33 @@ public class MoreFragment extends Fragment {
         list = new ArrayList<MoreItem>();
         list.add(new MoreItem("意见反馈"));
         list.add(new MoreItem("觉得好，就赏个好评吧"));
-        list.add(new MoreItem("开发者"));
+        list.add(new MoreItem("开发者网站"));
         mAdapter.setData(list);
         list_more.setAdapter(mAdapter);
-
+        list_more.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        Intent intentFeedback = new Intent(Intent.ACTION_SENDTO);
+                        intentFeedback.setData(Uri.parse("mailto:u0509421@gmail.com"));
+                        intentFeedback.putExtra(Intent.EXTRA_SUBJECT, "历史上的今天 意见与建议");
+                        startActivity(intentFeedback);
+                        break;
+                    case 1:
+                        Intent intentMarket = new Intent(Intent.ACTION_MAIN);
+                        intentMarket.addCategory("android.intent.category.APP_MARKET");
+                        intentMarket.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intentMarket);
+                        break;
+                    case 2:
+                        Intent intentAuthor = new Intent(Intent.ACTION_VIEW);
+                        intentAuthor.setData(Uri.parse("http://u0509421.github.io/about/"));
+                        startActivity(intentAuthor);
+                        break;
+                }
+            }
+        });
         return rootView;
     }
 }

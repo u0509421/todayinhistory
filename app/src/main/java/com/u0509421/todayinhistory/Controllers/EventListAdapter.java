@@ -1,6 +1,7 @@
 package com.u0509421.todayinhistory.Controllers;
 
 import android.content.Context;
+import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,9 @@ public class EventListAdapter extends BaseAdapter {
         }
         holder.tvEventListTitle.setText(arrayList.get(position).getTitle());
         holder.tvEventListDay.setText(arrayList.get(position).getDate());
+
+        TextPaint tp = holder.tvEventListTitle.getPaint();
+        tp.setFakeBoldText(true);
         return convertView;
     }
 

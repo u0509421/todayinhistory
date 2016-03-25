@@ -46,10 +46,10 @@ public class DayListActivity extends AppCompatActivity {
         day = intent.getStringExtra("day");
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         setTitle("历史上的"+month+"月"+day+"日");
-        System.out.println(month+""+day);
+
         String urlString = "http://v.juhe.cn/todayOnhistory/queryEvent.php?key="+
                 "a87c2d7033aedc2b2460de9117588285"+"&date="+month+"/"+day;
-        System.out.println(urlString);
+
 
         mDay_list = (ListView) findViewById(R.id.daylist);
         mAdapter = new EventListAdapter(this);

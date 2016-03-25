@@ -1,6 +1,7 @@
 package com.u0509421.todayinhistory.Controllers;
 
 import android.content.Context;
+import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,8 @@ public class MoreListAdapter extends BaseAdapter {
             holder = (MoreItemHolder) convertView.getTag();
         }
         holder.tvItem.setText(arrayList.get(position).getItem());
+        TextPaint tp = holder.tvItem.getPaint();
+        tp.setFakeBoldText(true);
         return convertView;
     }
 }
