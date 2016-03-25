@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class EventListHolder{
     public TextView tvEventListTitle = null;
     public TextView tvEventListDay = null;
-    public ImageView ivEventList = null;
+    public TextView tvDay = null;
 
     public EventListHolder(){
         super();

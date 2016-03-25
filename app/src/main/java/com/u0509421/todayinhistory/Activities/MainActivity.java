@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity{
                 new BottomBarFragment(StarFragment.newInstance(),R.drawable.ic_favorites,"收藏"),
                 new BottomBarFragment(MoreFragment.newInstance(),R.drawable.ic_friends,"更多"));
 
-        mBottomBar.mapColorForTab(0, "#8a7370");
-        mBottomBar.mapColorForTab(1,"#8a7370");
-        mBottomBar.mapColorForTab(2,"#8a7370");
-        mBottomBar.mapColorForTab(3,"#8a7370");
+        mBottomBar.mapColorForTab(0, "#957123");
+        mBottomBar.mapColorForTab(1,"#957123");
+        mBottomBar.mapColorForTab(2,"#957123");
+        mBottomBar.mapColorForTab(3,"#957123");
     }
 
 }

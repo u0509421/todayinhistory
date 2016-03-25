@@ -152,7 +152,7 @@ public class DayActivity extends AppCompatActivity {
             sb.append(result.getString("content").replace("\r\n","<br/>"));
             if (picNo > 1){
                 for (int i = 1; i < picNo; i++){
-                    sb.append("<img src="+picUrls[i]+">");
+                    sb.append("<img src="+picUrls[i]+" width=\"100%\">");
                     sb.append("<h5 align=\"center\">"+picTitles[i]+"</h5>");
                 }
             }

@@ -4,11 +4,13 @@
      android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <TextView
+        android:id="@+id/tvDay"
         android:paddingLeft="10dp"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/lishi"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="16dp"
         />
 
     <LinearLayout
