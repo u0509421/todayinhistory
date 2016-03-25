@@ -14,8 +14,7 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
-import com.u0509421.todayinhistory.Activities.DayActivity;
-import com.u0509421.todayinhistory.Activities.DayListActivity;
+import com.u0509421.todayinhistory.activities.DayListActivity;
 import com.u0509421.todayinhistory.R;
 
 import java.text.DateFormat;

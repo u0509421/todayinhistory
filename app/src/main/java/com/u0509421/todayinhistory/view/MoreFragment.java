@@ -12,10 +12,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.u0509421.todayinhistory.Controllers.EventListAdapter;
-import com.u0509421.todayinhistory.Controllers.MoreListAdapter;
-import com.u0509421.todayinhistory.Model.EventList;
-import com.u0509421.todayinhistory.Model.MoreItem;
+import com.u0509421.todayinhistory.adapter.MoreListAdapter;
+import com.u0509421.todayinhistory.bean.MoreItem;
 import com.u0509421.todayinhistory.R;
 
 import java.util.ArrayList;

@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,8 +20,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activities.DayActivity" />
-        <activity android:name=".Activities.DayListActivity" />
+        <activity android:name=".activities.DayActivity" />
+        <activity android:name=".activities.DayListActivity" />
 
     </application>
 

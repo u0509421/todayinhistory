@@ -1,16 +1,17 @@
-package com.u0509421.todayinhistory.Activities;
+package com.u0509421.todayinhistory.activities;
 
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,22 +20,21 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.u0509421.todayinhistory.DB.HistoryDb;
-import com.u0509421.todayinhistory.Model.EventList;
+import com.u0509421.todayinhistory.db.HistoryDb;
 import com.u0509421.todayinhistory.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
-
 /**
  * Created by Terry on 20/3/16.
  */
 public class DayActivity extends AppCompatActivity {
 
-    private TextView tvDayContent,tvDayTitle;
+    private TextView tvDayTitle;
+    private WebView wbContent;
+
     private static final String KEY = "http://v.juhe.cn/todayOnhistory/queryDetail.php?key=a87c2d7033aedc2b2460de9117588285&e_id=";
     private String title,date,eid;
 
@@ -48,9 +48,8 @@ public class DayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_day);
 
         //View初始化
-        tvDayContent = (TextView) findViewById(R.id.tvDayContent);
+        wbContent = (WebView) findViewById(R.id.wbContent);
         tvDayTitle = (TextView) findViewById(R.id.tvDayTitle);
-        tvDayContent.setMovementMethod(new ScrollingMovementMethod());
 
         //接收传来的日期跟标题
         Intent intent = getIntent();
@@ -93,6 +92,7 @@ public class DayActivity extends AppCompatActivity {
                     }
                 });
         dayQueue.add(jsonObjectRequest);
+
     }
 
     @Override
@@ -127,10 +127,37 @@ public class DayActivity extends AppCompatActivity {
     private void parseJson(JSONObject jsonObject){
         try {
             JSONArray results = new JSONArray(jsonObject.getString("result"));
-
+            JSONArray picUrl = new JSONArray(results.getJSONObject(0).getString("picUrl"));
             JSONObject result = results.getJSONObject(0);
+
+            int picNo = Integer.parseInt(result.getString("picNo"));
+            String[] picUrls ,picTitles ;
+            picUrls = new String[picNo];
+            picTitles = new String[picNo];
+            if (picNo != 0){
+                for (int i = 0;i < picNo; i++){
+                    picUrls[i] = picUrl.getJSONObject(i).getString("url");
+                    picTitles[i] = picUrl.getJSONObject(i).getString("pic_title");
+                }
+            }
+
             tvDayTitle.setText(result.getString("title"));
-            tvDayContent.setText(result.getString("content"));
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("<html><body>");
+            if (picNo != 0){
+                sb.append("<img src="+picUrls[0]+" width=\"100%\">");
+                sb.append("<h5 align=\"center\">"+picTitles[0]+"</h5>");
+            }
+            sb.append(result.getString("content").replace("\r\n","<br/>"));
+            if (picNo > 1){
+                for (int i = 1; i < picNo; i++){
+                    sb.append("<img src="+picUrls[i]+">");
+                    sb.append("<h5 align=\"center\">"+picTitles[i]+"</h5>");
+                }
+            }
+            sb.append("</body></html>");
+            wbContent.loadDataWithBaseURL(null, sb.toString(), "text/html", "UTF-8", null);
 
         } catch (JSONException e) {
             e.printStackTrace();

@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.u0509421.todayinhistory.Activities.DayActivity;
-import com.u0509421.todayinhistory.Controllers.EventListAdapter;
-import com.u0509421.todayinhistory.DB.HistoryDb;
-import com.u0509421.todayinhistory.Model.EventList;
+import com.u0509421.todayinhistory.activities.DayActivity;
+import com.u0509421.todayinhistory.adapter.EventListAdapter;
+import com.u0509421.todayinhistory.db.HistoryDb;
+import com.u0509421.todayinhistory.bean.EventList;
 import com.u0509421.todayinhistory.R;
 
 import java.util.ArrayList;
