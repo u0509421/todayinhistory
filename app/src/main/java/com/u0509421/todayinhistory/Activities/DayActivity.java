@@ -22,6 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.u0509421.todayinhistory.db.HistoryDb;
 import com.u0509421.todayinhistory.R;
+import com.u0509421.todayinhistory.util.VolleyUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,7 +75,6 @@ public class DayActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         setTitle(date);
 
-        RequestQueue dayQueue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -91,8 +91,16 @@ public class DayActivity extends AppCompatActivity {
                         Toast.makeText(DayActivity.this, "网络不给力，重新连接一下吧~", Toast.LENGTH_SHORT).show();
                     }
                 });
-        dayQueue.add(jsonObjectRequest);
+        // 请求加上Tag，用于取消请求
+        jsonObjectRequest.setTag(this);
+        VolleyUtil.getRequestQueue(getApplicationContext()).add(jsonObjectRequest);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        VolleyUtil.getRequestQueue(getApplication()).cancelAll(this);
+        super.onDestroy();
     }
 
     @Override

@@ -21,6 +21,7 @@ import com.u0509421.todayinhistory.activities.DayActivity;
 import com.u0509421.todayinhistory.adapter.EventListAdapter;
 import com.u0509421.todayinhistory.bean.EventList;
 import com.u0509421.todayinhistory.R;
+import com.u0509421.todayinhistory.util.VolleyUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,7 +84,6 @@ public class TodayFragment extends Fragment {
 
 
         //开始网络请求
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(urlString, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -100,11 +100,17 @@ public class TodayFragment extends Fragment {
                 Toast.makeText(getActivity(), "网络不给力，重新连接一下吧~", Toast.LENGTH_SHORT).show();
             }
         });
-        queue.add(jsonObjectRequest);
+        // 请求加上Tag，用于取消请求
+        jsonObjectRequest.setTag(this);
+        VolleyUtil.getRequestQueue(getActivity()).add(jsonObjectRequest);
         return rootView;
     }
 
-
+    @Override
+    public void onDestroyView() {
+        VolleyUtil.getRequestQueue(getActivity()).cancelAll(this);
+        super.onDestroyView();
+    }
 
     /**
      * 解析网络请求返回的JSON数据
