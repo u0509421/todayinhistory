@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/bottomBarToday"
-        android:icon="@drawable/ic_nearby"
+        android:icon="@drawable/ic_today"
         android:title="今天"/>
 
     <item
         android:id="@+id/bottomBarEveryday"
-        android:icon="@drawable/ic_recents"
+        android:icon="@drawable/ic_everyday"
         android:title="每天"/>
 
     <item android:id="@+id/bottomBarStar"
@@ -16,7 +16,7 @@
         android:title="收藏"/>
 
     <item android:id="@+id/bottomBarMore"
-        android:icon="@drawable/ic_friends"
+        android:icon="@drawable/ic_more"
         android:title="更多"/>
 
 </menu>

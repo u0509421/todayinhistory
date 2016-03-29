@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity{
 
         mBottomBar = BottomBar.attach(this,savedInstanceState);
         mBottomBar.setFragmentItems(getSupportFragmentManager(),R.id.fragmentContainer,
-                new BottomBarFragment(TodayFragment.newInstance(),R.drawable.ic_nearby,"今天"),
-                new BottomBarFragment(EverydayFragment.newInstance(),R.drawable.ic_recents,"每天"),
+                new BottomBarFragment(TodayFragment.newInstance(),R.drawable.ic_today,"今天"),
+                new BottomBarFragment(EverydayFragment.newInstance(),R.drawable.ic_everyday,"每天"),
                 new BottomBarFragment(StarFragment.newInstance(),R.drawable.ic_favorites,"收藏"),
-                new BottomBarFragment(MoreFragment.newInstance(),R.drawable.ic_friends,"更多"));
+                new BottomBarFragment(MoreFragment.newInstance(),R.drawable.ic_more,"更多"));
 
         mBottomBar.mapColorForTab(0, "#957123");
         mBottomBar.mapColorForTab(1,"#957123");

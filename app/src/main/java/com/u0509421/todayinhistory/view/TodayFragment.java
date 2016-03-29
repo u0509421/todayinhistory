@@ -96,7 +96,7 @@ public class TodayFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println(error.getMessage().toString());
+                
                 Toast.makeText(getActivity(), "网络不给力，重新连接一下吧~", Toast.LENGTH_SHORT).show();
             }
         });
