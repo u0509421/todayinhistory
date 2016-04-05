@@ -31,7 +31,7 @@ public class EventListAdapter extends BaseAdapter {
     public EventListAdapter(Context context){
         mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
-        this.typeface = Typeface.createFromAsset(mContext.getAssets(),"fonts/fangzhenglantingzhunheijianti.ttf");
+//        this.typeface = Typeface.createFromAsset(mContext.getAssets(),"fonts/fangzhenglantingzhunheijianti.ttf");
     }
 
     public void setData(ArrayList<EventList>list){

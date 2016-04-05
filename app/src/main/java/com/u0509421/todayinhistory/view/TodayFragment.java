@@ -40,7 +40,7 @@ public class TodayFragment extends Fragment {
     private ArrayList<EventList> list = new ArrayList<EventList>();
     private ListView list_today;
     private EventListAdapter adapter;
-    private String monthTemp = null,month = null,day = null;
+    private String monthTemp = null,dayTemp = null,month = null,day = null;
 
     public TodayFragment() {
     }
@@ -143,12 +143,18 @@ public class TodayFragment extends Fragment {
         String todayDate = dateFormat.format(new Date());
         String[] dateArray = todayDate.split("-");
         monthTemp = dateArray[0];
-        day = dateArray[1];
+        dayTemp = dateArray[1];
         if (Integer.parseInt(monthTemp.substring(0,1)) == 0){
             month = monthTemp.substring(1);
         }
         if (Integer.parseInt(monthTemp.substring(0,1))!= 0){
             month = monthTemp;
+        }
+        if (Integer.parseInt(dayTemp.substring(0,1)) == 0){
+            day = dayTemp.substring(1);
+        }
+        if (Integer.parseInt(monthTemp.substring(0,1))!= 0){
+            day = dayTemp;
         }
 
     }
