@@ -62,9 +62,8 @@ public class MoreFragment extends Fragment {
                         startActivity(intentFeedback);
                         break;
                     case 1:
-                        Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.u0509421.todayinhistory");
+                        Uri uri = Uri.parse("market://details?id=" + getContext().getPackageName());
                         Intent intentMarket = new Intent(Intent.ACTION_VIEW,uri);
-                        intentMarket.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intentMarket);
                         break;
                     case 2:

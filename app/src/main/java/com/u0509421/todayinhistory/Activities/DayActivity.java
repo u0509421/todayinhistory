@@ -55,12 +55,10 @@ public class DayActivity extends AppCompatActivity {
         //接收传来的日期跟标题
         Intent intent = getIntent();
         String url = KEY + intent.getStringExtra("e_id");
-        System.out.println(url);
 
         eid = intent.getStringExtra("e_id");
         title = intent.getStringExtra("title");
         date = intent.getStringExtra("date");
-        System.out.println(title + date);
 
         //准备把数据放到本地数据库中
         cv = new ContentValues();
