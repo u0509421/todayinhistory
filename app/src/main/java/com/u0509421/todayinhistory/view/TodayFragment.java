@@ -144,19 +144,9 @@ public class TodayFragment extends Fragment {
         String[] dateArray = todayDate.split("-");
         monthTemp = dateArray[0];
         dayTemp = dateArray[1];
-        if (Integer.parseInt(monthTemp.substring(0,1)) == 0){
-            month = monthTemp.substring(1);
-        }
-        if (Integer.parseInt(monthTemp.substring(0,1))!= 0){
-            month = monthTemp;
-        }
-        if (Integer.parseInt(dayTemp.substring(0,1)) == 0){
-            day = dayTemp.substring(1);
-        }
-        if (Integer.parseInt(monthTemp.substring(0,1))!= 0){
-            day = dayTemp;
-        }
-
+        
+        month = (Integer.parseInt(monthTemp.substring(0,1)) == 0)? monthTemp.substring(1) : monthTemp;
+        day = (Integer.parseInt(dayTemp.substring(0,1)) == 0)? dayTemp.substring(1) : dayTemp;
     }
 
 }

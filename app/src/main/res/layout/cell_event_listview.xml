@@ -6,8 +6,8 @@
 
     <TextView
         android:id="@+id/tvDay"
-        android:paddingLeft="10dp"
-        android:layout_width="50dp"
+        android:paddingLeft="16dp"
+        android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:textSize="16dp"
@@ -15,24 +15,26 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingLeft="15dp">
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
         <TextView
-            android:paddingTop="10dp"
+            android:paddingTop="5dp"
             android:id="@+id/tvEventListDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="date"
              />
         <TextView
-            android:paddingTop="12dp"
+            android:paddingTop="5dp"
             android:id="@+id/tvEventListTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="title" />
+            android:text="title"
+            android:paddingBottom="5dp"/>
 
     </LinearLayout>
 

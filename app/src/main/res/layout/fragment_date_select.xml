@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         app:mcv_showOtherDates="all"
-        app:mcv_selectionColor="#957123"
+        app:mcv_selectionColor="#836464"
         />
 
     <TextView
