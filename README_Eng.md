@@ -23,6 +23,7 @@ Android Studio
 
 + Add welcome page
 + Add more content categories
++ Add sharing function
 
 ## Download
 
