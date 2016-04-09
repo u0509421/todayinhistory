@@ -2,6 +2,8 @@ package com.u0509421.todayinhistory.activities;
 
 
 
+import android.os.PersistableBundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.roughike.bottombar.BottomBar;
@@ -34,4 +36,10 @@ public class MainActivity extends AppCompatActivity{
         mBottomBar.mapColorForTab(3,"#836464");
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        mBottomBar.onSaveInstanceState(outState);
+    }
 }

@@ -26,12 +26,10 @@ public class EventListAdapter extends BaseAdapter {
     private LayoutInflater mLayoutInflater;
     private Context mContext;
     private ArrayList<EventList>arrayList = new ArrayList<EventList>();
-    private Typeface typeface;
 
     public EventListAdapter(Context context){
         mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
-//        this.typeface = Typeface.createFromAsset(mContext.getAssets(),"fonts/fangzhenglantingzhunheijianti.ttf");
     }
 
     public void setData(ArrayList<EventList>list){
@@ -69,9 +67,7 @@ public class EventListAdapter extends BaseAdapter {
         }
 
         String[] day = arrayList.get(position).getDate().split("年");
-        //设置字体
-        holder.tvEventListDay.setTypeface(typeface);
-        holder.tvEventListTitle.setTypeface(typeface);
+
         holder.tvEventListTitle.setText(arrayList.get(position).getTitle());
         holder.tvEventListDay.setText(arrayList.get(position).getDate());
         holder.tvDay.setText(day[0]);
