@@ -1,4 +1,5 @@
 # Today In Histroy App
+[中文](https://github.com/u0509421/todayinhistory)
 
 ## About
 My first published App since learning android development. content data is from [Juhe API](https://www.juhe.cn/docs/api/id/63). 
