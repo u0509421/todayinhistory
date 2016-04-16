@@ -3,23 +3,18 @@ package com.u0509421.todayinhistory.activities;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.u0509421.todayinhistory.db.HistoryDb;
 import com.u0509421.todayinhistory.R;
 import com.u0509421.todayinhistory.util.VolleyUtil;
@@ -39,7 +34,7 @@ public class DayActivity extends AppCompatActivity {
     private static final String KEY = "http://v.juhe.cn/todayOnhistory/queryDetail.php?key=a87c2d7033aedc2b2460de9117588285&e_id=";
     private String title,date,eid;
 
-    private HistoryDb historyDb;
+    private com.u0509421.todayinhistory.db.HistoryDb historyDb;
     private SQLiteDatabase dbWrite;
     private ContentValues cv;
 

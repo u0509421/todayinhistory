@@ -12,11 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.u0509421.todayinhistory.activities.DayActivity;
 import com.u0509421.todayinhistory.adapter.EventListAdapter;
 import com.u0509421.todayinhistory.bean.EventList;
@@ -35,18 +33,18 @@ import java.util.List;
 /**
  * Created by Terry on 21/3/16.
  */
-public class TodayFragment extends Fragment {
+public class FragmentToday extends Fragment {
 
     private ArrayList<EventList> list = new ArrayList<EventList>();
     private ListView list_today;
     private EventListAdapter adapter;
     private String monthTemp = null,dayTemp = null,month = null,day = null;
 
-    public TodayFragment() {
+    public FragmentToday() {
     }
 
-    public static TodayFragment newInstance() {
-        TodayFragment sampleFragment = new TodayFragment();
+    public static FragmentToday newInstance() {
+        FragmentToday sampleFragment = new FragmentToday();
         return sampleFragment;
     }
 

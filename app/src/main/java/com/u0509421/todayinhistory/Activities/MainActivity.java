@@ -2,17 +2,15 @@ package com.u0509421.todayinhistory.activities;
 
 
 
-import android.os.PersistableBundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarFragment;
 import com.u0509421.todayinhistory.R;
-import com.u0509421.todayinhistory.view.EverydayFragment;
-import com.u0509421.todayinhistory.view.MoreFragment;
-import com.u0509421.todayinhistory.view.StarFragment;
-import com.u0509421.todayinhistory.view.TodayFragment;
+import com.u0509421.todayinhistory.view.FragmentEveryday;
+import com.u0509421.todayinhistory.view.FragmentMore;
+import com.u0509421.todayinhistory.view.FragmentFavourite;
+import com.u0509421.todayinhistory.view.FragmentToday;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -25,10 +23,10 @@ public class MainActivity extends AppCompatActivity{
 
         mBottomBar = BottomBar.attach(this,savedInstanceState);
         mBottomBar.setFragmentItems(getSupportFragmentManager(),R.id.fragmentContainer,
-                new BottomBarFragment(TodayFragment.newInstance(),R.drawable.ic_today,"今天"),
-                new BottomBarFragment(EverydayFragment.newInstance(),R.drawable.ic_everyday,"每天"),
-                new BottomBarFragment(StarFragment.newInstance(),R.drawable.ic_favorites,"收藏"),
-                new BottomBarFragment(MoreFragment.newInstance(),R.drawable.ic_more,"更多"));
+                new BottomBarFragment(FragmentToday.newInstance(),R.drawable.ic_today,"今天"),
+                new BottomBarFragment(FragmentEveryday.newInstance(),R.drawable.ic_everyday,"每天"),
+                new BottomBarFragment(FragmentFavourite.newInstance(),R.drawable.ic_favorites,"收藏"),
+                new BottomBarFragment(FragmentMore.newInstance(),R.drawable.ic_more,"更多"));
 
         mBottomBar.mapColorForTab(0, "#836464");
         mBottomBar.mapColorForTab(1,"#836464");

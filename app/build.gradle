@@ -26,4 +26,5 @@ dependencies {
     compile 'com.prolificinteractive:material-calendarview:1.2.0'
     compile 'com.roughike:bottom-bar:1.1.5'
     compile project(':volley')
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
 }

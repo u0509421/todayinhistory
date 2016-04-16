@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat;
 /**
  * Created by Terry on 21/3/16.
  */
-public class EverydayFragment extends Fragment implements OnDateSelectedListener,OnMonthChangedListener {
+public class FragmentEveryday extends Fragment implements OnDateSelectedListener,OnMonthChangedListener {
 
     private static final DateFormat FORMATTER = SimpleDateFormat.getDateInstance();
 
@@ -32,11 +32,11 @@ public class EverydayFragment extends Fragment implements OnDateSelectedListener
 
     private Bundle bundle;
 
-    public EverydayFragment() {
+    public FragmentEveryday() {
     }
 
-    public static EverydayFragment newInstance() {
-        EverydayFragment sampleFragment = new EverydayFragment();
+    public static FragmentEveryday newInstance() {
+        FragmentEveryday sampleFragment = new FragmentEveryday();
         return sampleFragment;
     }
 
@@ -60,7 +60,7 @@ public class EverydayFragment extends Fragment implements OnDateSelectedListener
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_date_select,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_everyday,container,false);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
         ((AppCompatActivity)getActivity()).setTitle("历史上的每天");

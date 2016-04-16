@@ -21,17 +21,17 @@ import java.util.ArrayList;
 /**
  * Created by Terry on 21/3/16.
  */
-public class MoreFragment extends Fragment {
+public class FragmentMore extends Fragment {
 
     private ListView list_more;
     private MoreListAdapter mAdapter;
     private ArrayList<MoreItem> list;
 
-    public MoreFragment() {
+    public FragmentMore() {
     }
 
-    public static MoreFragment newInstance() {
-        MoreFragment sampleFragment = new MoreFragment();
+    public static FragmentMore newInstance() {
+        FragmentMore sampleFragment = new FragmentMore();
         return sampleFragment;
     }
 

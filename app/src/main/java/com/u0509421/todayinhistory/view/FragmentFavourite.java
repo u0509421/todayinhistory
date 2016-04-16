@@ -24,7 +24,7 @@ import java.util.ArrayList;
 /**
  * Created by Terry on 21/3/16.
  */
-public class StarFragment extends Fragment {
+public class FragmentFavourite extends Fragment {
 
     private ListView sList_star;
     private EventListAdapter sAdapter;
@@ -33,11 +33,11 @@ public class StarFragment extends Fragment {
     private HistoryDb historyDb;
     private SQLiteDatabase dbRead;
 
-    public StarFragment() {
+    public FragmentFavourite() {
     }
 
-    public static StarFragment newInstance() {
-        StarFragment sampleFragment = new StarFragment();
+    public static FragmentFavourite newInstance() {
+        FragmentFavourite sampleFragment = new FragmentFavourite();
         return sampleFragment;
     }
 
@@ -45,7 +45,7 @@ public class StarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_star,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_favourite,container,false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
         ((AppCompatActivity)getActivity()).setTitle("收藏");
 
