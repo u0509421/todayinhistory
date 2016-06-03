@@ -36,9 +36,9 @@ public class FragmentFavourite extends Fragment {
     public FragmentFavourite() {
     }
 
-    public static FragmentFavourite newInstance() {
-        FragmentFavourite sampleFragment = new FragmentFavourite();
-        return sampleFragment;
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Nullable
@@ -46,8 +46,6 @@ public class FragmentFavourite extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_favourite,container,false);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
-        ((AppCompatActivity)getActivity()).setTitle("收藏");
 
         sList_star = (ListView) rootView.findViewById(R.id.star_list);
 
@@ -74,6 +72,7 @@ public class FragmentFavourite extends Fragment {
         return rootView;
     }
 
+
     private void refreshListView(){
         sAdapter = new EventListAdapter(getActivity());
         list = new ArrayList<EventList>();
@@ -92,4 +91,5 @@ public class FragmentFavourite extends Fragment {
             }
         }
     }
+
 }

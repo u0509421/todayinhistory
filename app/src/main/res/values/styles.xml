@@ -14,4 +14,18 @@
         <item name="android:textColor">@color/mcv_text_date_light</item>
     </style>
 
+    <style name="TextBottomBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="ImageBottomBar">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:clickable">false</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_marginTop">6dp</item>
+    </style>
 </resources>

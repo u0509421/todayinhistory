@@ -35,9 +35,9 @@ public class FragmentEveryday extends Fragment implements OnDateSelectedListener
     public FragmentEveryday() {
     }
 
-    public static FragmentEveryday newInstance() {
-        FragmentEveryday sampleFragment = new FragmentEveryday();
-        return sampleFragment;
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -62,8 +62,8 @@ public class FragmentEveryday extends Fragment implements OnDateSelectedListener
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_everyday,container,false);
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
-        ((AppCompatActivity)getActivity()).setTitle("历史上的每天");
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("历史上的每天");
+
 
 
         widget = (MaterialCalendarView) rootView.findViewById(R.id.calendarView);

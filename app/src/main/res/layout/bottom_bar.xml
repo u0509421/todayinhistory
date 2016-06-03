@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:layout_alignParentBottom="true"
+    android:id="@+id/main_tab_bottom">
+
+    <LinearLayout
+        android:elevation="8dp"
+        android:background="@color/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/tabToday">
+
+            <ImageView
+                android:id="@+id/ivToday"
+                style="@style/ImageBottomBar" />
+
+            <TextView
+                style="@style/TextBottomBar"
+                android:text="今天"
+                android:id="@+id/tvToday"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/tabEveryday">
+
+            <ImageView
+                android:id="@+id/ivEveryday"
+                style="@style/ImageBottomBar" />
+
+            <TextView
+                style="@style/TextBottomBar"
+                android:text="每天"
+                android:id="@+id/tvEveryday"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/tabFavourite">
+
+            <ImageView
+                android:id="@+id/ivFavourite"
+                style="@style/ImageBottomBar"/>
+
+            <TextView
+                style="@style/TextBottomBar"
+                android:text="收藏"
+                android:id="@+id/tvFavourite"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/tabMore">
+
+            <ImageView
+                android:id="@+id/ivMore"
+                style="@style/ImageBottomBar"/>
+
+            <TextView
+                style="@style/TextBottomBar"
+                android:text="更多"
+                android:id="@+id/tvMore"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

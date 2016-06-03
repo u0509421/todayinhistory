@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.joanzapata.iconify.widget.IconTextView;
 import com.u0509421.todayinhistory.activities.DayActivity;
 import com.u0509421.todayinhistory.adapter.EventListAdapter;
 import com.u0509421.todayinhistory.bean.EventList;
@@ -40,17 +41,13 @@ public class FragmentToday extends Fragment {
     private EventListAdapter adapter;
     private String monthTemp = null,dayTemp = null,month = null,day = null;
 
+
     public FragmentToday() {
     }
 
-    public static FragmentToday newInstance() {
-        FragmentToday sampleFragment = new FragmentToday();
-        return sampleFragment;
-    }
-
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Nullable
@@ -63,8 +60,6 @@ public class FragmentToday extends Fragment {
         String urlString = "http://v.juhe.cn/todayOnhistory/queryEvent.php?key="+
                 "a87c2d7033aedc2b2460de9117588285"+"&date="+month+"/"+day;
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
-        ((AppCompatActivity)getActivity()).setTitle("历史上的" + month + "月" + day + "日");
         list_today = (ListView) rootView.findViewById(R.id.list_today);
         adapter = new EventListAdapter(getActivity());
         list_today.setAdapter(adapter);
@@ -107,6 +102,7 @@ public class FragmentToday extends Fragment {
         VolleyUtil.getRequestQueue(getActivity()).add(jsonObjectRequest);
         return rootView;
     }
+
 
     @Override
     public void onDestroyView() {

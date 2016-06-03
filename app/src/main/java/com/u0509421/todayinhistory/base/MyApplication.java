@@ -1,4 +1,4 @@
-package com.u0509421.todayinhistory;
+package com.u0509421.todayinhistory.base;
 
 import android.app.Application;
 

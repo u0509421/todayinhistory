@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Created by Terry on 21/3/16.
  */
-public class FragmentMore extends Fragment {
+public class FragmentMore extends Fragment{
 
     private ListView list_more;
     private MoreListAdapter mAdapter;
@@ -30,18 +30,15 @@ public class FragmentMore extends Fragment {
     public FragmentMore() {
     }
 
-    public static FragmentMore newInstance() {
-        FragmentMore sampleFragment = new FragmentMore();
-        return sampleFragment;
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_more,container,false);
-
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
-        ((AppCompatActivity)getActivity()).setTitle("更多");
 
         list_more = (ListView) rootView.findViewById(R.id.list_more);
         mAdapter = new MoreListAdapter(getActivity());
