@@ -1,22 +1,18 @@
-package com.u0509421.todayinhistory.adapter;
+package com.u0509421.todayinhistory.ui.adapter;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.u0509421.todayinhistory.bean.EventList;
-import com.u0509421.todayinhistory.bean.EventListHolder;
+import com.u0509421.todayinhistory.db.bean.EventList;
+import com.u0509421.todayinhistory.db.bean.EventListHolder;
 import com.u0509421.todayinhistory.R;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by Terry on 17/3/16.

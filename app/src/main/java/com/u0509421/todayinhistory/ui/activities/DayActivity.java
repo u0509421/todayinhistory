@@ -1,4 +1,4 @@
-package com.u0509421.todayinhistory.activities;
+package com.u0509421.todayinhistory.ui.activities;
 
 import android.content.ContentValues;
 import android.content.Intent;

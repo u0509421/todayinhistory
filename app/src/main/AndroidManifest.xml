@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity"
+        <activity android:name=".ui.activities.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
 
             <intent-filter>
@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.DayActivity" />
-        <activity android:name=".activities.DayListActivity" />
+        <activity android:name=".ui.activities.DayActivity" />
+        <activity android:name=".ui.activities.DayListActivity" />
 
     </application>
 

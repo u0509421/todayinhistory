@@ -1,4 +1,4 @@
-package com.u0509421.todayinhistory.adapter;
+package com.u0509421.todayinhistory.ui.adapter;
 
 import android.content.Context;
 import android.text.TextPaint;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.u0509421.todayinhistory.bean.MoreItem;
-import com.u0509421.todayinhistory.bean.MoreItemHolder;
+import com.u0509421.todayinhistory.db.bean.MoreItem;
+import com.u0509421.todayinhistory.db.bean.MoreItemHolder;
 import com.u0509421.todayinhistory.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.u0509421.todayinhistory.bean;
+package com.u0509421.todayinhistory.db.bean;
 
 import android.widget.TextView;
 

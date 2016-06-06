@@ -1,4 +1,4 @@
-package com.u0509421.todayinhistory.bean;
+package com.u0509421.todayinhistory.db.bean;
 
 /**
  * Created by Terry on 17/3/16.

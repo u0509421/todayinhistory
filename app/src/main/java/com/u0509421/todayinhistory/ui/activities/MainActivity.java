@@ -1,4 +1,4 @@
-package com.u0509421.todayinhistory.activities;
+package com.u0509421.todayinhistory.ui.activities;
 
 
 
@@ -14,13 +14,11 @@ import android.widget.TextView;
 
 import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
-import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.BottomBarFragment;
 import com.u0509421.todayinhistory.R;
-import com.u0509421.todayinhistory.view.FragmentEveryday;
-import com.u0509421.todayinhistory.view.FragmentMore;
-import com.u0509421.todayinhistory.view.FragmentFavourite;
-import com.u0509421.todayinhistory.view.FragmentToday;
+import com.u0509421.todayinhistory.ui.view.FragmentEveryday;
+import com.u0509421.todayinhistory.ui.view.FragmentMore;
+import com.u0509421.todayinhistory.ui.view.FragmentFavourite;
+import com.u0509421.todayinhistory.ui.view.FragmentToday;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

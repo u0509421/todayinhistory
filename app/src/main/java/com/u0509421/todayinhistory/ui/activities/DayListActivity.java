@@ -1,4 +1,4 @@
-package com.u0509421.todayinhistory.activities;
+package com.u0509421.todayinhistory.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.u0509421.todayinhistory.adapter.EventListAdapter;
-import com.u0509421.todayinhistory.bean.EventList;
+import com.u0509421.todayinhistory.ui.adapter.EventListAdapter;
+import com.u0509421.todayinhistory.db.bean.EventList;
 import com.u0509421.todayinhistory.R;
 
 import org.json.JSONArray;

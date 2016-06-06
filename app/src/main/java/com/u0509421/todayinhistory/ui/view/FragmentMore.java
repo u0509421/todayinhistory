@@ -1,19 +1,18 @@
-package com.u0509421.todayinhistory.view;
+package com.u0509421.todayinhistory.ui.view;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.u0509421.todayinhistory.adapter.MoreListAdapter;
-import com.u0509421.todayinhistory.bean.MoreItem;
+import com.u0509421.todayinhistory.ui.adapter.MoreListAdapter;
+import com.u0509421.todayinhistory.db.bean.MoreItem;
 import com.u0509421.todayinhistory.R;
 
 import java.util.ArrayList;

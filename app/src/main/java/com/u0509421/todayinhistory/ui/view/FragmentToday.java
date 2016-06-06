@@ -1,10 +1,9 @@
-package com.u0509421.todayinhistory.view;
+package com.u0509421.todayinhistory.ui.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +14,9 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.joanzapata.iconify.widget.IconTextView;
-import com.u0509421.todayinhistory.activities.DayActivity;
-import com.u0509421.todayinhistory.adapter.EventListAdapter;
-import com.u0509421.todayinhistory.bean.EventList;
+import com.u0509421.todayinhistory.ui.activities.DayActivity;
+import com.u0509421.todayinhistory.ui.adapter.EventListAdapter;
+import com.u0509421.todayinhistory.db.bean.EventList;
 import com.u0509421.todayinhistory.R;
 import com.u0509421.todayinhistory.util.VolleyUtil;
 
