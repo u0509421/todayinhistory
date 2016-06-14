@@ -112,7 +112,7 @@ public class DayActivity extends AppCompatActivity {
                         .show();
                 break;
             case R.id.action_share:
-                //TODO
+                share();
                 break;
             default:
                 break;
@@ -163,5 +163,13 @@ public class DayActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void share(){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
+        intent.putExtra(Intent.EXTRA_TEXT, "来自「历史上的今天」的分享" + title);
+        startActivity(Intent.createChooser(intent, title));
     }
 }
