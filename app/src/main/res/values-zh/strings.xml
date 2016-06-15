@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">TodayInHistory</string>
-    <string name="favourite">Favourite</string>
-    <string name="share">Share</string>
+    <string name="app_name">历史上的今天</string>
+    <string name="favourite">收藏</string>
+    <string name="share">分享</string>
 
     <string name="Github">https://github.com/u0509421</string>
     <string name="Linkedin">https://www.linkedin.com/in/lupilin</string>
