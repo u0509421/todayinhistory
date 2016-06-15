@@ -11,13 +11,14 @@
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:paddingTop="20dp"/>
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"/>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/list_more"
-        android:paddingTop="30dp">
+        android:background="@drawable/listview_boarder">
     </ListView>
 
     <TextView
@@ -25,5 +26,5 @@
         android:paddingTop="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Version 1.5.0"/>
+        android:text="Version 1.7.0"/>
 </LinearLayout>

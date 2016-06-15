@@ -2,9 +2,11 @@ package com.u0509421.todayinhistory.ui.activities;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,11 +33,13 @@ public class DayActivity extends AppCompatActivity {
     private TextView tvDayTitle;
     private WebView wbContent;
 
+    private static final String TAG = "TodayInHistory";
     private static final String KEY = "http://v.juhe.cn/todayOnhistory/queryDetail.php?key=a87c2d7033aedc2b2460de9117588285&e_id=";
     private String title,date,eid;
+    private boolean isFavourite;
 
     private com.u0509421.todayinhistory.db.HistoryDb historyDb;
-    private SQLiteDatabase dbWrite;
+    private SQLiteDatabase dbWrite, dbRead;
     private ContentValues cv;
 
     @Override
@@ -56,13 +60,13 @@ public class DayActivity extends AppCompatActivity {
         date = intent.getStringExtra("date");
 
         //准备把数据放到本地数据库中
-        cv = new ContentValues();
-        cv.put("title",title);
-        cv.put("date",date);
-        cv.put("eid",eid);
+
         historyDb = new HistoryDb(this);
         dbWrite = historyDb.getWritableDatabase();
+        dbRead = historyDb.getReadableDatabase();
 
+        checkFavorite(eid);
+        System.out.println(isFavourite);
         //设定标题
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -100,6 +104,12 @@ public class DayActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.appbar_menu,menu);
+        MenuItem favorite = menu.findItem(R.id.action_favourite);
+        if (isFavourite){
+            favorite.setIcon(R.drawable.ic_favorites);
+        }else {
+            favorite.setIcon(R.drawable.ic_favorite_empty);
+        }
         return true;
     }
 
@@ -107,9 +117,7 @@ public class DayActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_favourite:
-                dbWrite.replace("history",null,cv);
-                Toast.makeText(this, "已添加到收藏", Toast.LENGTH_SHORT)
-                        .show();
+                dealWithDatabase();
                 break;
             case R.id.action_share:
                 share();
@@ -118,6 +126,47 @@ public class DayActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    // 判断事件是否已经在数据库中
+    private void checkFavorite(String eid){
+
+        Cursor cursor = dbRead.query(HistoryDb.TABLE_NAME,new String[]{"eid"},"eid = ?",new String[]{eid},null,null,null);
+        if (cursor.getCount() > 0){
+            isFavourite = true;
+        }
+    }
+
+    private void dealWithDatabase(){
+        if (!isFavourite){
+            addToDatabase();
+        }else {
+            deleteFromDatabase();
+        }
+        supportInvalidateOptionsMenu();
+    }
+
+    // 将收藏添加进数据库
+    private void addToDatabase(){
+
+        dbWrite = historyDb.getWritableDatabase();
+
+        // 把事件添加到数据库
+        cv = new ContentValues();
+        cv.put("title",title);
+        cv.put("date",date);
+        cv.put("eid",eid);
+        dbWrite.replace("history",null,cv);
+
+        Toast.makeText(this, "已添加到收藏", Toast.LENGTH_SHORT).show();
+        isFavourite = true;
+    }
+
+    // 从数据库中删除
+    private void deleteFromDatabase(){
+        dbWrite.delete(HistoryDb.TABLE_NAME, "eid = ?", new String[]{eid});
+        Toast.makeText(this, "从收藏中删除", Toast.LENGTH_SHORT).show();
+        isFavourite = false;
     }
 
     /**

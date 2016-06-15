@@ -40,12 +40,20 @@ public class FragmentFavourite extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshListView();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_favourite,container,false);
 
+        list = new ArrayList<EventList>();
+        sAdapter = new EventListAdapter(getActivity());
         sList_star = (ListView) rootView.findViewById(R.id.star_list);
 
         historyDb = new HistoryDb(getActivity());
@@ -73,8 +81,8 @@ public class FragmentFavourite extends Fragment {
 
 
     private void refreshListView(){
-        sAdapter = new EventListAdapter(getActivity());
-        list = new ArrayList<EventList>();
+
+        list.clear();
         Cursor cursor = dbRead.query("history",null,null,null,null,null,null);
         if (cursor.moveToFirst()){
             for (int i = 0;i < cursor.getCount();i++){
@@ -89,6 +97,7 @@ public class FragmentFavourite extends Fragment {
                 cursor.moveToNext();
             }
         }
+        sAdapter.notifyDataSetChanged();
     }
 
 }

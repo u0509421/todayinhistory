@@ -11,6 +11,7 @@ public class HistoryDb extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "HistoryDb";
+    public static final String TABLE_NAME = "history";
 
     public HistoryDb(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
