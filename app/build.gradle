@@ -8,8 +8,8 @@ android {
         applicationId "com.u0509421.todayinhistory"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 4
-        versionName "1.6"
+        versionCode 5
+        versionName "2.0"
     }
     buildTypes {
         release {
