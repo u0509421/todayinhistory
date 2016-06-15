@@ -1,11 +1,15 @@
 package com.u0509421.todayinhistory.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.u0509421.todayinhistory.db.bean.MoreItem;
@@ -54,6 +58,7 @@ public class MoreListAdapter extends BaseAdapter {
             holder = new MoreItemHolder();
             convertView = mLayoutInflater.inflate(R.layout.cell_more_frag,null);
             holder.tvItem = (TextView) convertView.findViewById(R.id.tvItem);
+            holder.ivImage = (ImageView) convertView.findViewById(R.id.ivImage);
             convertView.setTag(holder);
         }else {
             holder = (MoreItemHolder) convertView.getTag();
@@ -61,6 +66,23 @@ public class MoreListAdapter extends BaseAdapter {
         holder.tvItem.setText(arrayList.get(position).getItem());
         TextPaint tp = holder.tvItem.getPaint();
         tp.setFakeBoldText(true);
+        switch (position){
+            case 0:
+                Drawable drawable = convertView.getResources().getDrawable(R.drawable.information);
+                holder.ivImage.setImageDrawable(drawable);
+                break;
+            case 1:
+                drawable = convertView.getResources().getDrawable(R.drawable.thumb);
+                holder.ivImage.setImageDrawable(drawable);
+                break;
+            case 2:
+                drawable = convertView.getResources().getDrawable(R.drawable.linkedin);
+                holder.ivImage.setImageDrawable(drawable);
+                break;
+            case 3:
+                drawable = convertView.getResources().getDrawable(R.drawable.github);
+                holder.ivImage.setImageDrawable(drawable);
+        }
         return convertView;
     }
 }

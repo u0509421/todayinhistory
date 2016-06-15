@@ -1,14 +1,22 @@
 package com.u0509421.todayinhistory.network;
 
+import com.u0509421.todayinhistory.db.bean.Result;
+
 import retrofit2.http.GET;
+import retrofit2.http.Query;
+import rx.Observable;
 
 /**
  * Created by Terry on 5/6/16.
  */
-public class HistoryService {
+public interface HistoryService {
 
-    // 事件列表：http://api.juheapi.com/japi/toh?key=您申请的KEY&v=1.0&month=11&day=1
-    // 根据ID查询事件：http://api.juheapi.com/japi/tohdet?key=您申请的KEY&v=1.0&id=4847
+    // 请求示例：http://v.juhe.cn/todayOnhistory/queryEvent.php?key=YOURKEY&date=1/1
 
-//    @GET("toh")
+    String BASE_URL = "http://v.juhe.cn/todayOnhistory/";
+    String KEY = "a87c2d7033aedc2b2460de9117588285";
+
+    @GET("queryEvent.php")
+    Observable<Result> getResult(@Query("key") String key,
+                                 @Query("date") String date);
 }

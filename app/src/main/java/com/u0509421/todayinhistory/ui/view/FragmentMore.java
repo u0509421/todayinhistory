@@ -45,6 +45,7 @@ public class FragmentMore extends Fragment{
         list.add(new MoreItem("意见反馈"));
         list.add(new MoreItem("觉得好，就赏个好评吧"));
         list.add(new MoreItem("开发者网站"));
+        list.add(new MoreItem("查看源代码"));
         mAdapter.setData(list);
         list_more.setAdapter(mAdapter);
         list_more.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -64,9 +65,13 @@ public class FragmentMore extends Fragment{
                         break;
                     case 2:
                         Intent intentAuthor = new Intent(Intent.ACTION_VIEW);
-                        intentAuthor.setData(Uri.parse("http://u0509421.github.io/about/"));
+                        intentAuthor.setData(Uri.parse(getString(R.string.Linkedin)));
                         startActivity(intentAuthor);
                         break;
+                    case 3:
+                        Intent intentGit = new Intent(Intent.ACTION_VIEW);
+                        intentGit.setData(Uri.parse(getString(R.string.Github)));
+                        startActivity(intentGit);
                 }
             }
         });
