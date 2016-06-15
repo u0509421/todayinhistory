@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.u0509421.todayinhistory.db.bean.EventList;
-import com.u0509421.todayinhistory.db.bean.EventListHolder;
 import com.u0509421.todayinhistory.R;
 
 import java.util.ArrayList;
@@ -110,5 +109,15 @@ public class EventListAdapter extends BaseAdapter {
                 break;
         }
         return randomColor;
+    }
+
+    public static class EventListHolder{
+        public TextView tvEventListTitle = null;
+        public TextView tvEventListDay = null;
+        public TextView tvDay = null;
+
+        public EventListHolder(){
+            super();
+        }
     }
 }

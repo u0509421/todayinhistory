@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import com.u0509421.todayinhistory.db.bean.Result;
 import com.u0509421.todayinhistory.network.HistoryService;
@@ -20,7 +19,7 @@ import com.u0509421.todayinhistory.ui.activities.DayActivity;
 import com.u0509421.todayinhistory.ui.adapter.EventListAdapter;
 import com.u0509421.todayinhistory.db.bean.EventList;
 import com.u0509421.todayinhistory.R;
-import com.u0509421.todayinhistory.util.VolleyUtil;
+import com.u0509421.todayinhistory.network.VolleyUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

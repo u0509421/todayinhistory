@@ -1,8 +1,6 @@
 package com.u0509421.todayinhistory.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.u0509421.todayinhistory.db.bean.MoreItem;
-import com.u0509421.todayinhistory.db.bean.MoreItemHolder;
 import com.u0509421.todayinhistory.R;
 
 import java.util.ArrayList;
@@ -84,5 +81,14 @@ public class MoreListAdapter extends BaseAdapter {
                 holder.ivImage.setImageDrawable(drawable);
         }
         return convertView;
+    }
+
+    public static class MoreItemHolder {
+
+        public TextView tvItem = null;
+        public ImageView ivImage = null;
+        public MoreItemHolder(){
+            super();
+        }
     }
 }

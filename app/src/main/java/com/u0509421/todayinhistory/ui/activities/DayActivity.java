@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.u0509421.todayinhistory.db.HistoryDb;
 import com.u0509421.todayinhistory.R;
-import com.u0509421.todayinhistory.util.VolleyUtil;
+import com.u0509421.todayinhistory.network.VolleyUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;

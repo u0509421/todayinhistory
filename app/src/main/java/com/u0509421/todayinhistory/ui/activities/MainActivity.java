@@ -46,9 +46,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+
+        // fix fragment overlapping issue
+//        super.onSaveInstanceState(outState);
     }
 
+
+    /*
+     * 初始化各种view
+     * initialize views
+     */
     private void initView(){
         tvToday = (TextView) findViewById(R.id.tvToday);
         tvEveryday = (TextView) findViewById(R.id.tvEveryday);

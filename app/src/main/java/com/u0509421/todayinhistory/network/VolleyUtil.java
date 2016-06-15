@@ -1,4 +1,4 @@
-package com.u0509421.todayinhistory.util;
+package com.u0509421.todayinhistory.network;
 
 import android.content.Context;
 
